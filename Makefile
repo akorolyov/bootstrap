@@ -62,7 +62,7 @@ clean:
 # recess & uglifyjs are required
 #
 
-bootstrap: bootstrap-img bootstrap-css bootstrap-js
+bootstrap: bootstrap-img bootstrap-css bootstrap-js bootstrap-proto-js
 
 
 #
@@ -77,6 +77,20 @@ bootstrap/js/*.js: js/*.js
 	echo "/*!\n* Bootstrap.js by @fat & @mdo\n* Copyright 2012 Twitter, Inc.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > bootstrap/js/copyright.js
 	cat bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js > bootstrap/js/bootstrap.min.js
 	rm bootstrap/js/copyright.js bootstrap/js/bootstrap.min.tmp.js
+
+#
+# JS COMPILE
+#
+bootstrap-proto-js: bootstrap/proto-js/*.js
+
+bootstrap/proto-js/*.js: proto-js/*.js
+	mkdir -p bootstrap/js
+	cat proto-js/bootstrap-transition.js proto-js/bootstrap-alert.js proto-js/bootstrap-button.js proto-js/bootstrap-carousel.js proto-js/bootstrap-collapse.js proto-js/bootstrap-dropdown.js proto-js/bootstrap-modal.js proto-js/bootstrap-tooltip.js proto-js/bootstrap-popover.js proto-js/bootstrap-scrollspy.js proto-js/bootstrap-tab.js proto-js/bootstrap-typeahead.js proto-js/bootstrap-affix.js > bootstrap/js/bootstrap-proto.js
+	./node_modules/.bin/uglifyjs -nc bootstrap/js/bootstrap-proto.js > bootstrap/js/bootstrap-proto.min.tmp.js
+	echo "/*!\n* Bootstrap-proto.js by @ecomdev \n* Copyright 2013 EcomDev B.V.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > bootstrap/js/copyright-proto.js
+	cat bootstrap/js/copyright-proto.js bootstrap/js/bootstrap-proto.min.tmp.js > bootstrap/js/bootstrap-proto.min.js
+	rm bootstrap/js/copyright-proto.js bootstrap/js/bootstrap-proto.min.tmp.js
+
 
 #
 # CSS COMPLILE
