@@ -16,6 +16,7 @@ build:
 	@echo "Building Bootstrap..."
 	@echo "${HR}\n"
 	@./node_modules/.bin/jshint js/*.js --config js/.jshintrc
+	@./node_modules/.bin/jshint proto-js/*.js --config proto-js/.jshintrc
 	@./node_modules/.bin/jshint js/tests/unit/*.js --config js/.jshintrc
 	@echo "Running JSHint on javascript...             ${CHECK} Done"
 	@./node_modules/.bin/recess --compile ${BOOTSTRAP_LESS} > ${BOOTSTRAP}
@@ -85,7 +86,7 @@ bootstrap-proto-js: bootstrap/proto-js/*.js
 
 bootstrap/proto-js/*.js: proto-js/*.js
 	mkdir -p bootstrap/js
-	cat proto-js/bootstrap-transition.js proto-js/bootstrap-alert.js proto-js/bootstrap-button.js proto-js/bootstrap-carousel.js proto-js/bootstrap-collapse.js proto-js/bootstrap-dropdown.js proto-js/bootstrap-modal.js proto-js/bootstrap-tooltip.js proto-js/bootstrap-popover.js proto-js/bootstrap-scrollspy.js proto-js/bootstrap-tab.js proto-js/bootstrap-typeahead.js proto-js/bootstrap-affix.js > bootstrap/js/bootstrap-proto.js
+	cat proto-js/bootstrap-prototype.js proto-js/bootstrap-transition.js proto-js/bootstrap-alert.js proto-js/bootstrap-button.js proto-js/bootstrap-carousel.js proto-js/bootstrap-collapse.js proto-js/bootstrap-dropdown.js proto-js/bootstrap-modal.js proto-js/bootstrap-tooltip.js proto-js/bootstrap-popover.js proto-js/bootstrap-scrollspy.js proto-js/bootstrap-tab.js proto-js/bootstrap-typeahead.js proto-js/bootstrap-affix.js > bootstrap/js/bootstrap-proto.js
 	./node_modules/.bin/uglifyjs -nc bootstrap/js/bootstrap-proto.js > bootstrap/js/bootstrap-proto.min.tmp.js
 	echo "/*!\n* Bootstrap-proto.js by @ecomdev \n* Copyright 2013 EcomDev B.V.\n* http://www.apache.org/licenses/LICENSE-2.0.txt\n*/" > bootstrap/js/copyright-proto.js
 	cat bootstrap/js/copyright-proto.js bootstrap/js/bootstrap-proto.min.tmp.js > bootstrap/js/bootstrap-proto.min.js
