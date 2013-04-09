@@ -51,6 +51,7 @@
     if (typeof offsetTop == 'function') offsetTop = offset.top()
     if (typeof offsetBottom == 'function') offsetBottom = offset.bottom()
 
+      console.log(scrollHeight, scrollTop, position);
     affix = this.unpin != null && (scrollTop + this.unpin <= position.top) ?
       false    : offsetBottom != null && (position.top + this.$element.height() >= scrollHeight - offsetBottom) ?
       'bottom' : offsetTop != null && scrollTop <= offsetTop ?

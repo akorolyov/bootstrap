@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<h1>Hello, world!</h1>
+
+<div class="alert fade in">
+    <button data-dismiss="alert" class="close" type="button">x</button>
+    <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
+</div>
+
+<ul class="nav nav-tabs" id="myTab">
+    <li><a href="#home" data-toggle="tab">Home</a></li>
+    <li><a href="#profile" data-toggle="tab">Profile</a></li>
+    <li><a href="#messages" data-toggle="tab">Messages</a></li>
+    <li><a href="#settings" data-toggle="tab">Settings</a></li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane" id="home">Home</div>
+    <div class="tab-pane" id="profile">Profile</div>
+    <div class="tab-pane" id="messages">Messages</div>
+    <div class="tab-pane" id="settings">Settings</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js"></script>
+<script src="/proto-js/bootstrap-prototype.js"></script>
+<script src="/proto-js/bootstrap-alert.js"></script>
+<script src="/proto-js/bootstrap-tab.js"></script>
+<script language="javascript">
+
+    document.observe("dom:loaded",function(){
+       // $(".alert").alert('close');
+
+//        $$('#myTab a:first').invoke('tab', 'show');
+//        $$('#myTab li:eq(2) a').invoke('tab', 'show');
+
+//        $('home').observe('tab:show', function(){console.log(arguments)});
+//        $('home').observe('tab:shown', function(){console.log(arguments)});
+//
+//        $$('#myTab a:first').each(function(item){
+//            item.observe('tab:show', function(e){
+//                console.log(e.memo);
+//            });
+//        });
+//        $$('#myTab a:first').each(function(item){
+//            item.observe('tab:shown', function(e){
+//                console.log(e);
+//                console.log(e.memo);
+//            });
+//        });
+//        $$('#myTab a:last').each(function(item){
+//            item.observe('tab:shown', function(e){
+//                console.log(e);
+//                console.log(e.memo);
+//            });
+//        });
+    });
+</script>
+</body>
+</html>
