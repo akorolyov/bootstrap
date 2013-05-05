@@ -6,7 +6,7 @@ var Typeahead = function (element, options) {
     this.highlighter = this.options.highlighter || this.highlighter;
     this.updater = this.options.updater || this.updater;
     this.source = this.options.source;
-    this.$menu = this.options.menu;
+    this.$menu = this.options.menu.clone(true);
     this.shown = false;
     this.listen();
 
