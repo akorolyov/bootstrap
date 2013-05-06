@@ -30,14 +30,15 @@ Typeahead.prototype = {
     },
 
     show: function () {
-        var pos = this.$element.getLayout();
+        var top = this.$element.measure('top') - this.$element.cumulativeScrollOffset().top + document.viewport.getScrollOffsets().top;
+        var left = this.$element.measure('left') - this.$element.cumulativeScrollOffset().left + document.viewport.getScrollOffsets().left;
         var height = this.$element.offsetHeight;
 
         this.$element.insert({'after': this.$menu});
 
         this.$menu.setStyle({
-            top: (pos.get('top') + height)+'px',
-            left: pos.get('left') + 'px',
+            top: (top + height)+'px',
+            left: left + 'px',
             display: 'block'
         });
         this.shown = true
@@ -65,6 +66,12 @@ Typeahead.prototype = {
     },
 
     process: function (items) {
+        if (typeof items  === 'string') {
+            var result = items.evalJSON(true);
+            if (result) {
+                items = result;
+            }
+        }
         items = items.filter(function (item) {
             return this.matcher(item)
         }.bind(this))
